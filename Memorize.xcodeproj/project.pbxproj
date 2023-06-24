@@ -7,16 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1D484942A4636B700226D58 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D484932A4636B700226D58 /* CardView.swift */; };
+		E1D484962A46370600226D58 /* MemorizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D484952A46370600226D58 /* MemorizeModel.swift */; };
+		E1D484992A463D3B00226D58 /* MemorizeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D484982A463D3B00226D58 /* MemorizeGame.swift */; };
+		E1D4849B2A464EDF00226D58 /* CardGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4849A2A464EDF00226D58 /* CardGenerator.swift */; };
 		E1D6BDA22A44FCB500DA8E14 /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6BDA12A44FCB500DA8E14 /* MemorizeApp.swift */; };
-		E1D6BDA42A44FCB500DA8E14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6BDA32A44FCB500DA8E14 /* ContentView.swift */; };
+		E1D6BDA42A44FCB500DA8E14 /* MemorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D6BDA32A44FCB500DA8E14 /* MemorizeView.swift */; };
 		E1D6BDA62A44FCB500DA8E14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D6BDA52A44FCB500DA8E14 /* Assets.xcassets */; };
 		E1D6BDA92A44FCB500DA8E14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D6BDA82A44FCB500DA8E14 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1D484932A4636B700226D58 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		E1D484952A46370600226D58 /* MemorizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeModel.swift; sourceTree = "<group>"; };
+		E1D484982A463D3B00226D58 /* MemorizeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeGame.swift; sourceTree = "<group>"; };
+		E1D4849A2A464EDF00226D58 /* CardGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGenerator.swift; sourceTree = "<group>"; };
 		E1D6BD9E2A44FCB500DA8E14 /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D6BDA12A44FCB500DA8E14 /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
-		E1D6BDA32A44FCB500DA8E14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E1D6BDA32A44FCB500DA8E14 /* MemorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeView.swift; sourceTree = "<group>"; };
 		E1D6BDA52A44FCB500DA8E14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1D6BDA82A44FCB500DA8E14 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +40,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1D484912A46364A00226D58 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1D6BDA32A44FCB500DA8E14 /* MemorizeView.swift */,
+				E1D484932A4636B700226D58 /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1D484922A46365600226D58 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1D484952A46370600226D58 /* MemorizeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1D484972A463D2300226D58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1D484982A463D3B00226D58 /* MemorizeGame.swift */,
+				E1D4849A2A464EDF00226D58 /* CardGenerator.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E1D6BD952A44FCB500DA8E14 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +85,10 @@
 		E1D6BDA02A44FCB500DA8E14 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				E1D484972A463D2300226D58 /* ViewModel */,
+				E1D484922A46365600226D58 /* Model */,
+				E1D484912A46364A00226D58 /* Views */,
 				E1D6BDA12A44FCB500DA8E14 /* MemorizeApp.swift */,
-				E1D6BDA32A44FCB500DA8E14 /* ContentView.swift */,
 				E1D6BDA52A44FCB500DA8E14 /* Assets.xcassets */,
 				E1D6BDA72A44FCB500DA8E14 /* Preview Content */,
 			);
@@ -137,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1D6BDA42A44FCB500DA8E14 /* ContentView.swift in Sources */,
+				E1D6BDA42A44FCB500DA8E14 /* MemorizeView.swift in Sources */,
+				E1D484942A4636B700226D58 /* CardView.swift in Sources */,
 				E1D6BDA22A44FCB500DA8E14 /* MemorizeApp.swift in Sources */,
+				E1D4849B2A464EDF00226D58 /* CardGenerator.swift in Sources */,
+				E1D484992A463D3B00226D58 /* MemorizeGame.swift in Sources */,
+				E1D484962A46370600226D58 /* MemorizeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,16 +310,19 @@
 				DEVELOPMENT_TEAM = BRES2X8F74;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Memorize Game";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluecpp.Memorize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -299,16 +342,19 @@
 				DEVELOPMENT_TEAM = BRES2X8F74;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Memorize Game";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluecpp.Memorize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
