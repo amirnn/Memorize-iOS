@@ -8,7 +8,7 @@
 import Foundation
 
 struct MemorizeModel<ContentType> where ContentType: Equatable {
-    private(set) var cards: Array<Card>
+    private(set) var cards: [Card]
     var previouslyChosenCardIndex: Int?
     
     init(contents: [ContentType]) {
@@ -20,13 +20,11 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
         cards.shuffle()
     }
     
-    init(cardFactory: () -> [Card]){
+    init(cardFactory: () -> [Card]) {
         self.cards = cardFactory()
     }
     
-    mutating func chooseCard(id uuid: UUID){
-        
-        // cards.indices.forEach({cards[$0].isFaceUp = false})
+    mutating func chooseCard(id uuid: UUID) {
         
         let index = cards.firstIndex { card in
             card.id == uuid
@@ -39,7 +37,7 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
                 // Chosen card is different than the previously chosen card, and the card is not matched.
                 if cIndex != pIndex {
                     // turn all the cards down except the previously chosen card.
-                    cards.indices.forEach({ if $0 != pIndex { cards[$0].isFaceUp = false }})
+                    cards.indices.forEach({ if $0 != pIndex { cards[$0].isFaceUp = false } })
                     // turn the card over
                     cards[cIndex].isFaceUp = true
                     
@@ -64,7 +62,7 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
             else {
                 previouslyChosenCardIndex = cIndex
                 cards[cIndex].isFaceUp = true
-                cards.indices.forEach({ if $0 != cIndex { cards[$0].isFaceUp = false }})
+                cards.indices.forEach({ if $0 != cIndex { cards[$0].isFaceUp = false } })
             }
         }
     }
