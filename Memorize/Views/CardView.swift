@@ -12,20 +12,35 @@ import SwiftUI
 struct CardView: View {
     typealias Card = MemorizeModel<String>.Card
     let card: Card
-    var body: some View {
-        if card.isFaceUp{
-            ZStack{
-                RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(lineWidth: 5)
-                    .foregroundColor(.blue)
-                Text(card.content)
+    let shape = RoundedRectangle(cornerRadius: ControlPanel.roundedRectengaleCornerRadius)
+    
+    @ViewBuilder
+    var preAspectedShape: some View {
+        if !card.isMatched {
+            if card.isFaceUp{
+                ZStack{
+                    shape.foregroundColor(ControlPanel.shapeFrontColor)
+                    Text(card.content).foregroundColor(ControlPanel.textColor)
+                }
             }
-            .aspectRatio(2/3 ,contentMode: .fit)
+            else {
+                shape.foregroundColor(ControlPanel.shapeBackColor)
+            }
         }
         else {
-            RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)
-                .aspectRatio(2/3 ,contentMode: .fit)
+            shape.opacity(0)
         }
+    }
+    var body: some View {
+        preAspectedShape.aspectRatio(ControlPanel.aspectRatio ,contentMode: .fit)
+    }
+    
+    struct ControlPanel {
+        static let aspectRatio: CGFloat = 2/3
+        static let roundedRectengaleCornerRadius: CGFloat = 10
+        static let shapeFrontColor: Color = .white
+        static let shapeBackColor: Color = .blue
+        static let textColor: Color = .black
     }
 }
 

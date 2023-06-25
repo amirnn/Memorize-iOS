@@ -11,7 +11,7 @@ struct MemorizeView: View {
     @ObservedObject
     private var game: MemorizeGame
     var body: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]){
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: ControlPanel.minimumCardWidth))]){
             ForEach(game.cards) { card in
                 CardView(card: card)
                     .onTapGesture {
@@ -22,6 +22,10 @@ struct MemorizeView: View {
     }
     init(game: MemorizeGame) {
         self.game = game
+    }
+    
+    struct ControlPanel {
+        static let minimumCardWidth: CGFloat = 65
     }
 }
 
