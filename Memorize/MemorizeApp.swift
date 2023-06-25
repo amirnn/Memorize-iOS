@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct MemorizeApp: App {
     
-    let game = MemorizeGame.MemorizeGameFactory()
+    let game = MemorizeGame.memorizeGameFactory()
     var body: some Scene {
         WindowGroup {
             MemorizeView(game: game)

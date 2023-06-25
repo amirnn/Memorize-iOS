@@ -9,7 +9,8 @@ import Foundation
 
 struct MemorizeModel<ContentType> where ContentType: Equatable {
     private(set) var cards: [Card]
-    var previouslyChosenCardIndex: Int?
+    private(set) var isGameFinished: Bool = false
+    private var previouslyChosenCardIndex: Int?
     
     init(contents: [ContentType]) {
         cards = [Card]()
@@ -50,6 +51,8 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
                         // previouslyChosenCardIndex = .none
                         // turn down all the cards
                         // cards.forEach({$0.isFaceUp = false})
+                        // check to see if game is finished.
+                        self.isGameFinished = cards.reduce(true, {result, card in result && card.isMatched })
                     }
                     // else do nothing and turn down the cards and set the previously chosen card to nil.
                     // turn down all the cards

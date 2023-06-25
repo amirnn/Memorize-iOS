@@ -11,13 +11,24 @@ struct MemorizeView: View {
     @ObservedObject
     private var game: MemorizeGame
     var body: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: ControlPanel.minimumCardWidth))]){
-            ForEach(game.cards) { card in
-                CardView(card: card)
-                    .onTapGesture {
-                        game.choose(card.id)
+        if !game.isFinished {
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: ControlPanel.minimumCardWidth))]){
+                    ForEach(game.cards) { card in
+                        CardView(card: card)
+                            .onTapGesture {
+                                game.choose(card.id)
+                            }
                     }
+                }
             }
+        }
+        else{
+            Text("Game Finished! Well Done!").foregroundColor(.green).font(.largeTitle)
+            Button {game.restart()}
+        label: {
+            Text("Restart").foregroundColor(.blue).font(.title)
+        }
         }
     }
     init(game: MemorizeGame) {
@@ -31,7 +42,7 @@ struct MemorizeView: View {
 
 struct MemorizeView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = MemorizeGame.MemorizeGameFactory()
+        let game = MemorizeGame.memorizeGameFactory()
         MemorizeView(game: game)
     }
 }

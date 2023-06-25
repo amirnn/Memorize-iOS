@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10DB45B2A47CFD900AAFBA8 /* EmojiTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10DB45A2A47CFD900AAFBA8 /* EmojiTheme.swift */; };
 		E1D484942A4636B700226D58 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D484932A4636B700226D58 /* CardView.swift */; };
 		E1D484962A46370600226D58 /* MemorizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D484952A46370600226D58 /* MemorizeModel.swift */; };
 		E1D484992A463D3B00226D58 /* MemorizeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D484982A463D3B00226D58 /* MemorizeGame.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E10DB45A2A47CFD900AAFBA8 /* EmojiTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTheme.swift; sourceTree = "<group>"; };
 		E1D484932A4636B700226D58 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E1D484952A46370600226D58 /* MemorizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeModel.swift; sourceTree = "<group>"; };
 		E1D484982A463D3B00226D58 /* MemorizeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeGame.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		E1D484972A463D2300226D58 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E10DB45A2A47CFD900AAFBA8 /* EmojiTheme.swift */,
 				E1D484982A463D3B00226D58 /* MemorizeGame.swift */,
 				E1D4849A2A464EDF00226D58 /* CardGenerator.swift */,
 			);
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1D6BDA42A44FCB500DA8E14 /* MemorizeView.swift in Sources */,
+				E10DB45B2A47CFD900AAFBA8 /* EmojiTheme.swift in Sources */,
 				E1D484942A4636B700226D58 /* CardView.swift in Sources */,
 				E1D6BDA22A44FCB500DA8E14 /* MemorizeApp.swift in Sources */,
 				E1D4849B2A464EDF00226D58 /* CardGenerator.swift in Sources */,
