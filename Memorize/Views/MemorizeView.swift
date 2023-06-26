@@ -36,7 +36,7 @@ struct MemorizeView: View {
     }
     
     struct ControlPanel {
-        static let minimumCardWidth: CGFloat = 65
+        static let minimumCardWidth: CGFloat = 100
     }
 }
 

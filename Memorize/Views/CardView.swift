@@ -13,22 +13,29 @@ struct CardView: View {
     typealias Card = MemorizeModel<String>.Card
     let card: Card
     let shape = RoundedRectangle(cornerRadius: ControlPanel.roundedRectengaleCornerRadius)
+    private func getTextSize(in size: CGSize) -> CGFloat {
+        min(size.width, size.height) * ControlPanel.textSizeFactor
+    }
     
     @ViewBuilder
     var preAspectedShape: some View {
-        if !card.isMatched {
-            if card.isFaceUp{
-                ZStack{
-                    shape.foregroundColor(ControlPanel.shapeFrontColor)
-                    Text(card.content).foregroundColor(ControlPanel.textColor)
+        GeometryReader { geometry in
+            if !card.isMatched {
+                if card.isFaceUp{
+                    ZStack{
+                        shape.foregroundColor(ControlPanel.shapeFrontColor)
+                        Text(card.content)
+                            .foregroundColor(ControlPanel.textColor)
+                            .font(.system(size: getTextSize(in: geometry.size)))
+                    }
+                }
+                else {
+                    shape.foregroundColor(ControlPanel.shapeBackColor)
                 }
             }
             else {
-                shape.foregroundColor(ControlPanel.shapeBackColor)
+                shape.opacity(0)
             }
-        }
-        else {
-            shape.opacity(0)
         }
     }
     var body: some View {
@@ -41,6 +48,7 @@ struct CardView: View {
         static let shapeFrontColor: Color = .white
         static let shapeBackColor: Color = .blue
         static let textColor: Color = .black
+        static let textSizeFactor: CGFloat = 0.8
     }
 }
 
