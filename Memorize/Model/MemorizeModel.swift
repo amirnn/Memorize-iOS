@@ -10,7 +10,17 @@ import Foundation
 struct MemorizeModel<ContentType> where ContentType: Equatable {
     private(set) var cards: [Card]
     private(set) var isGameFinished: Bool = false
-    private var previouslyChosenCardIndex: Int?
+    private var previouslyChosenCardIndex: Int? {
+        get {
+            cards.indices.filter({ index in cards[index].isFaceUp == true }).oneAndOnly
+        }
+        set {
+            // We have set the previouslyChosenCardIndex to a new one, hence flip over the cards
+            if let index = newValue {
+                cards.indices.forEach { itr in cards[itr].isFaceUp = (itr == index) }
+            }
+        }
+    }
     
     init(contents: [ContentType]) {
         cards = [Card]()
@@ -38,7 +48,7 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
                 // Chosen card is different than the previously chosen card, and the card is not matched.
                 if cIndex != pIndex {
                     // turn all the cards down except the previously chosen card.
-                    cards.indices.forEach({ if $0 != pIndex { cards[$0].isFaceUp = false } })
+                    //                    cards.indices.forEach({ if $0 != pIndex { cards[$0].isFaceUp = false } })
                     // turn the card over
                     cards[cIndex].isFaceUp = true
                     
@@ -56,7 +66,7 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
                     }
                     // else do nothing and turn down the cards and set the previously chosen card to nil.
                     // turn down all the cards
-                    previouslyChosenCardIndex = .none
+                    // previouslyChosenCardIndex = .none
                     
                 }
             }
@@ -64,8 +74,8 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
             // also check if card was not matched previously.
             else {
                 previouslyChosenCardIndex = cIndex
-                cards[cIndex].isFaceUp = true
-                cards.indices.forEach({ if $0 != cIndex { cards[$0].isFaceUp = false } })
+                //cards[cIndex].isFaceUp = true
+                //cards.indices.forEach({ if $0 != cIndex { cards[$0].isFaceUp = false } })
             }
         }
     }
@@ -76,5 +86,15 @@ struct MemorizeModel<ContentType> where ContentType: Equatable {
         var isMatched: Bool = false
         var isFaceUp: Bool = false
     }
-    
+}
+
+extension Array {
+    var oneAndOnly: Element? {
+        if self.count == 1 {
+            return first
+        }
+        else {
+            return nil
+        }
+    }
 }
