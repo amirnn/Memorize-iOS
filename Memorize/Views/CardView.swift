@@ -17,21 +17,25 @@ struct CardView: View {
         min(size.width, size.height) * ControlPanel.textSizeFactor
     }
     
-//    private func removeSpacing(shape: Shape) -> any Shape {
-//        
-//    }
+    //    private func removeSpacing(shape: Shape) -> any Shape {
+    //
+    //    }
     
     @ViewBuilder
     var finalView: some View {
         GeometryReader { geometry in
+            let radiusForPie = min(geometry.size.width, geometry.size.height) / 2
             if !card.isMatched {
                 if card.isFaceUp{
                     ZStack{
                         shape.foregroundColor(ControlPanel.shapeFrontColor)
-                        shape.strokeBorder(lineWidth: ControlPanel.strokeBorderLength).foregroundColor(.blue)
+                        shape.strokeBorder(lineWidth: ControlPanel.strokeBorderLength).foregroundColor(ControlPanel.shapeStrokeBorderColor)
+                        
                         Text(card.content)
                             .foregroundColor(ControlPanel.textColor)
                             .font(.system(size: getTextSize(in: geometry.size)))
+                        Pie(radius:radiusForPie , clockwise: true, startAngle: ControlPanel.pieStartAngle, endAngle: ControlPanel.pieEndAngle).foregroundColor(ControlPanel.pieColor).opacity(ControlPanel.pieOpacity)
+                        
                     }
                 }
                 else {
@@ -48,10 +52,15 @@ struct CardView: View {
     }
     
     struct ControlPanel {
+        static let pieStartAngle = Angle(degrees: 90)
+        static let pieEndAngle = Angle(degrees: -30)
+        static let pieOpacity: CGFloat = 0.25
+        static let pieColor: Color = .yellow
         static let roundedRectengaleCornerRadius: CGFloat = 10
         static let strokeBorderLength: CGFloat = 5
         static let shapeFrontColor: Color = .white
         static let shapeBackColor: Color = .blue
+        static let shapeStrokeBorderColor: Color = .blue
         static let textColor: Color = .black
         static let textSizeFactor: CGFloat = 0.8
     }
