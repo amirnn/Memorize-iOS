@@ -17,15 +17,17 @@ class MemorizeGame: ObservableObject {
     private static func createModel() -> MemorizeModel<String> {
         let emojiTheme: EmojiTheme = .animals
 //        generateSomeCardContents(count: 4)
-        return MemorizeModel(contents: emojiTheme.getEmojis()[0..<2].reduce([String](), {(result, string) in  result + [string]}) )
+        return MemorizeModel(contents: emojiTheme.getEmojis()[0..<16].reduce([String](), {(result, string) in  result + [string]}) )
     }
     
     @Published
     private var model: MemorizeModel<String>
     typealias Card = MemorizeModel<String>.Card
+    
     var cards: [Card] {
         model.cards
     }
+    
     var isFinished: Bool {
         model.isGameFinished
     }

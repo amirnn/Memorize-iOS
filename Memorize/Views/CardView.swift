@@ -17,13 +17,18 @@ struct CardView: View {
         min(size.width, size.height) * ControlPanel.textSizeFactor
     }
     
+//    private func removeSpacing(shape: Shape) -> any Shape {
+//        
+//    }
+    
     @ViewBuilder
-    var preAspectedShape: some View {
+    var finalView: some View {
         GeometryReader { geometry in
             if !card.isMatched {
                 if card.isFaceUp{
                     ZStack{
                         shape.foregroundColor(ControlPanel.shapeFrontColor)
+                        shape.strokeBorder(lineWidth: ControlPanel.strokeBorderLength).foregroundColor(.blue)
                         Text(card.content)
                             .foregroundColor(ControlPanel.textColor)
                             .font(.system(size: getTextSize(in: geometry.size)))
@@ -39,12 +44,12 @@ struct CardView: View {
         }
     }
     var body: some View {
-        preAspectedShape.aspectRatio(ControlPanel.aspectRatio ,contentMode: .fit)
+        finalView
     }
     
     struct ControlPanel {
-        static let aspectRatio: CGFloat = 2/3
         static let roundedRectengaleCornerRadius: CGFloat = 10
+        static let strokeBorderLength: CGFloat = 5
         static let shapeFrontColor: Color = .white
         static let shapeBackColor: Color = .blue
         static let textColor: Color = .black
@@ -55,7 +60,7 @@ struct CardView: View {
 struct preview: PreviewProvider {
     typealias Card = MemorizeModel<String>.Card
     static var previews: some View {
-        let card = Card(content: ":-)", isFaceUp: true)
+        let card = Card(content: "😎", isFaceUp: true)
         CardView(card: card)
     }
 }
