@@ -13,15 +13,17 @@ struct Pie: Shape {
     var startAngle: Angle
     var endAngle: Angle
     
-    static private func getAngle(angle: Angle, clockwise: Bool) -> Angle {
-        return clockwise ? angle: Angle(degrees: -1 * angle.degrees)
+    static private func getAngle(angle: Angle) -> Angle {
+//        let modulo = fmod(angle.degrees, 360)
+//        return Angle(degrees: -modulo)
+        angle
     }
     
     init(radius: CGFloat, clockwise: Bool, startAngle: Angle, endAngle: Angle) {
         self.radius = radius
         self.clockwise = !clockwise
-        self.startAngle = startAngle
-        self.endAngle = endAngle
+        self.startAngle = Angle(degrees: startAngle.degrees - 90)
+        self.endAngle = Angle(degrees: endAngle.degrees - 90)
     }
     
     func path(in rect: CGRect) -> Path {
@@ -31,7 +33,12 @@ struct Pie: Shape {
         let upperStartPoint = middle + v1
         path.move(to: middle)
         path.addLine(to: upperStartPoint)
-        path.addArc(center: middle, radius: radius, startAngle: Pie.getAngle(angle: startAngle, clockwise: clockwise) , endAngle: Pie.getAngle(angle: endAngle, clockwise: clockwise), clockwise: clockwise)
+        path.addArc(center: middle,
+                    radius: radius,
+                    startAngle: startAngle,
+                    endAngle: endAngle,
+                    clockwise: clockwise)
+        path.addLine(to: middle)
         return path
     }
 }
@@ -39,15 +46,15 @@ struct Pie: Shape {
 struct Pie_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
-            let radius = min(geometry.size.width, geometry.size.height) / 2
-            Pie(radius: radius, clockwise: true, startAngle: Angle(degrees: 90), endAngle: Angle(degrees: 0))
+            let radius = 0.8 * (min(geometry.size.width, geometry.size.height) / 2)
+            Pie(radius: radius, clockwise: true, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 40)).foregroundColor(.blue).opacity(0.3)
         }
         
     }
 }
 
 extension CGPoint {
-    static func +(rhs: CGPoint, lhs: CGVector) -> CGPoint {
-        CGPoint(x: rhs.x + lhs.dx, y: rhs.y + lhs.dy)
+    static func +(lhs: CGPoint, rhs: CGVector) -> CGPoint {
+        CGPoint(x: lhs.x + rhs.dx, y: lhs.y + rhs.dy)
     }
 }

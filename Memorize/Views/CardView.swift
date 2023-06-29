@@ -34,7 +34,7 @@ struct CardView: View {
                         Text(card.content)
                             .foregroundColor(ControlPanel.textColor)
                             .font(.system(size: getTextSize(in: geometry.size)))
-                        Pie(radius:radiusForPie , clockwise: true, startAngle: ControlPanel.pieStartAngle, endAngle: ControlPanel.pieEndAngle).foregroundColor(ControlPanel.pieColor).opacity(ControlPanel.pieOpacity)
+                        Pie(radius:radiusForPie , clockwise: false, startAngle: ControlPanel.pieStartAngle, endAngle: ControlPanel.pieEndAngle).foregroundColor(ControlPanel.pieColor).opacity(ControlPanel.pieOpacity)
                         
                     }
                 }
